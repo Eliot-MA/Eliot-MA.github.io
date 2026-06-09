@@ -10,6 +10,9 @@ about:
     - icon: github
       text: Github
       href: https://github.com/Eliot-MA
+    - icon: envelope
+      text: Mail
+      href: mailto:eliot.mompean@uah.es
 ---
 
 I am a PhD researcher studying how plants interact and how Mediterranean forests regenerate. Through this blog, I share analyses, technical notes, research challenges, and reflections that emerge throughout the scientific process.

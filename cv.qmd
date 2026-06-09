@@ -1,6 +1,2 @@
----
-title: "cv"
-format: html
----
 
-This is where the cv will go. 
+![](cv.pdf){height=100%, width=100%}

@@ -20,6 +20,8 @@ website:
         href: https://github.com/Eliot-MA
       - icon: linkedin
         href: https://www.linkedin.com/in/eliot-mompean-asis/
+      - text: Contact
+        href: mailto:eliot.mompean@uah.es
 format:
   html:
     theme:
