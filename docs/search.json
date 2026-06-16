@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/IAVS26/poster.html",
+    "href": "posts/IAVS26/poster.html",
+    "title": "Pine forest canopy modulates shrub–oak seedling interactions depending on shrub functional identity",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "portfolio.html",
-    "href": "portfolio.html",
-    "title": "My portfolio",
-    "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nJun 6, 2026\n\n\nEliot Mompeán\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJun 3, 2026\n\n\nEliot Mompeán\n\n\n\n\n\nNo matching items"
+    "text": "Aquí irá el pdf del poster"
   },
   {
     "objectID": "index.html",
@@ -21,10 +14,17 @@
     "text": "I am a PhD researcher studying how plants interact and how Mediterranean forests regenerate. Through this blog, I share analyses, technical notes, research challenges, and reflections that emerge throughout the scientific process.\nIt is not knowledge until it is shared."
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "My blog",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+    "text": "Pine forest canopy modulates shrub–oak seedling interactions depending on shrub functional identity\n\n\nMy póster - 68th IAVS Annual Symposium - Gijón, Spain\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "now.html",
+    "href": "now.html",
+    "title": "What I’m doing now",
+    "section": "",
+    "text": "Currently undertaking a predoctoral research stay at the University of Bordeaux, where I am refining the analyses for my study on facilitative interactions between shrubs and oaks (Que_facil Project).\nWorking on my upcoming poster for the 68th Annual Symposium of the International Association for Vegetation Science (IAVS).\nBased primarily in Alcalá de Henares, Spain, where I work as a PhD researcher in the Forest Ecology and Restoration Research Group at the University of Alcalá.\nWorking on a research article about desiccation sensitivity (recalcitrance) in acorns of European oak species.\nAlways exploring new ways to share science. This blog is part of that exploration."
   }
 ]

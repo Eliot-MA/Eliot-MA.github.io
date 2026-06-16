@@ -1,0 +1,7 @@
+---
+title: "Pine forest canopy modulates shrub–oak seedling interactions depending on shrub functional identity"
+subtitle: "My poster - 68th IAVS Annual Symposium - Gijón, Spain"
+format: html
+---
+
+Aquí irá el pdf del poster

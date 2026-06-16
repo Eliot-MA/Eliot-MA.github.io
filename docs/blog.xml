@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Eliot Mompeán</title>
+<link>https://your-website-url.example.com/blog.html</link>
+<atom:link href="https://your-website-url.example.com/blog.xml" rel="self" type="application/rss+xml"/>
+<description>A blog built with Quarto</description>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Tue, 16 Jun 2026 10:37:55 GMT</lastBuildDate>
+<item>
+  <title>Pine forest canopy modulates shrub–oak seedling interactions depending on shrub functional identity</title>
+  <link>https://your-website-url.example.com/posts/IAVS26/poster.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Aquí irá el pdf del poster</p>
+
+
+
+ ]]></description>
+  <guid>https://your-website-url.example.com/posts/IAVS26/poster.html</guid>
+  <pubDate>Tue, 16 Jun 2026 10:37:55 GMT</pubDate>
+</item>
+</channel>
+</rss>

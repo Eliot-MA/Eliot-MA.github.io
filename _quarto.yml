@@ -10,12 +10,13 @@ website:
     left:
       - text: "Home"
         file: index.qmd
-      - text: "Portfolio"
-        file: portfolio.qmd
+      - text: "Blog"
+        file: blog.qmd
       - text: "CV"
         file: cv.qmd
+      - text: "Now"
+        file: now.qmd
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/Eliot-MA
       - icon: linkedin
