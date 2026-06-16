@@ -4,4 +4,6 @@ subtitle: "My poster - 68th IAVS Annual Symposium - Gijón, Spain"
 format: html
 ---
 
-Aquí irá el pdf del poster
+[👆 Save it!](poster_v4.png){download="poster_v4.png" .btn .btn-secondary}
+
+[![](poster_v4.png)](poster_v4.png)

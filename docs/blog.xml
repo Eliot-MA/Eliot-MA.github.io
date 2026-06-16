@@ -10,7 +10,7 @@
 <atom:link href="https://your-website-url.example.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Tue, 16 Jun 2026 10:37:55 GMT</lastBuildDate>
+<lastBuildDate>Tue, 16 Jun 2026 11:16:50 GMT</lastBuildDate>
 <item>
   <title>Pine forest canopy modulates shrub–oak seedling interactions depending on shrub functional identity</title>
   <link>https://your-website-url.example.com/posts/IAVS26/poster.html</link>
@@ -20,13 +20,14 @@
 
 
 
-<p>Aquí irá el pdf del poster</p>
+<p><a href="poster_v4.png" class="btn btn-secondary" download="poster_v4.png">👆 Save it!</a></p>
+<p><a href="poster_v4.png"><img src="https://your-website-url.example.com/posts/IAVS26/poster_v4.png" class="img-fluid"></a></p>
 
 
 
  ]]></description>
   <guid>https://your-website-url.example.com/posts/IAVS26/poster.html</guid>
-  <pubDate>Tue, 16 Jun 2026 10:37:55 GMT</pubDate>
+  <pubDate>Tue, 16 Jun 2026 11:16:50 GMT</pubDate>
 </item>
 </channel>
 </rss>
