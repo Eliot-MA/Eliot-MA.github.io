@@ -1,0 +1,18 @@
+---
+title: "My presentation in the PEN-CAFoRR Final Conference - Belgrade, Serbia"
+date: 2024-09-04
+format: html
+categories: [communications]
+image: portada.png
+---
+
+### Why do Mediterranean oaks show different colonization capacities? The role of acorn desiccation sensitivity and functional complementarity in shrub facilitation
+
+![](PresentacionV2.pdf){width=100% height=13cm}
+
+### Abstract
+
+Since the mid-20th century, forest cover in Europe has increased due to tree and shrub  colonization of abandoned agricultural lands and planted forests. However, in a forested landscape shaped by human management, Mediterranean oaks (*Quercus* spp.) are expanding following uneven patterns, with evergreen species showing greater colonization capacity than deciduous oaks. 
+The objective of this presentation is to outline the ideas and methodology we will use to study three ecological processes that may explain the differing colonization abilities of Mediterranean oaks. First, we will investigate how differences in desiccation sensitivity of acorns, a recalcitrant seed whose viability depends on maintaining high moisture content, relate to their functional traits and species ecology. Additionally, we will analyze whether timing differences in acorn dispersal affects species vulnerability to desiccation. To study these differences in acorn biology, we will combine field and laboratory experiments. Finally, we will examine whether functionally distinct shrubs have different effects on the establishment of ecologically contrasting oak species. Specifically, we will analyze if there is a functional complementarity between the traits of nurse shrubs and the traits of oaks that maximize facilitation, and whether this functional complementarity varies with environmental conditions. This will involve studying facilitative interactions through sowing experiments in open areas, and beneath the canopy of shrubs and  trees (specifically in pine stands) and in locations with different climates (semi-arid and humid). To complement the field and laboratory studies, we will conduct analyses of national forest inventories to determine whether the presence of certain shrub species or forest cover influences oak colonization. We anticipate that deciduous oak species exhibit a set of functional traits that make them more susceptible to shrub interaction, thereby slowing their colonization processes compared to evergreen species.
+
+Keywords: Colonization, Mediterranean oaks, Desiccation sensitivity, Functional traits, Facilitation
