@@ -1,9 +1,9 @@
 ---
 title: "My presentation in the PEN-CAFoRR Final Conference - Belgrade, Serbia"
 date: 2024-09-04
-format: html
 categories: [communications]
 image: portada.png
+description: "This was the first international conference I attended as part of my PhD thesis. A great experience."
 ---
 
 ### Why do Mediterranean oaks show different colonization capacities? The role of acorn desiccation sensitivity and functional complementarity in shrub facilitation
