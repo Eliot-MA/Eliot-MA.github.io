@@ -3,6 +3,7 @@ title: "My poster in the 68th IAVS Annual Symposium - Gijón, Spain"
 date: 2026-06-21
 format: html
 categories: [communications]
+description: "In this poster, I presented the preliminary analyses of our experiment on facilitation. For the design, I was inspired by the #BetterPoster movement, aiming to convey complex ideas in a simple and engaging way."
 ---
 
 ### Pine forest canopy modulates shrub–oak seedling interactions depending on shrub functional identity
@@ -18,3 +19,5 @@ Some shrub species are known to facilitate oak recruitment in Mediterranean clim
 **Symposium topic: Plant community interactions: Relationships with symbiotic and mutualistic organisms**
 
 Poster Session II (even numbered)
+
+[👆 #BetterPoster](https://astrobites.org/2020/02/28/fixing-academic-posters-the-betterposter-approach/)
