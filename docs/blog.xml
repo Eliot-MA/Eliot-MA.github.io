@@ -10,7 +10,415 @@
 <atom:link href="https://your-website-url.example.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Sat, 20 Jun 2026 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 04 Jul 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Don’t Blame the Graph, Blame the Message.</title>
+  <link>https://your-website-url.example.com/posts/heuristics_graphics/post.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I often come across people on my social media feeds talking about how to make a “good” chart. Science communication is a fascinating field, and knowing how to build a solid chart is a crucial aspect of that communication. Communicating science in a 30-second vertical video is no easy task, so I understand why simplifications happen. However, there’s one that particularly triggers me: <em>whether or not to show zero on the y-axis (the vertical axis).</em></p>
+<p>In some videos, I find this oversimplified idea: <em>“not showing zero is a technique of scientific manipulation and bad practice.”</em> For example, this <a href="https://vm.tiktok.com/ZNRKbve43/">post from Chartosaur</a>, a creator who makes excellent content about chart interpretation, drops this message:</p>
+<blockquote class="blockquote">
+<p>“If zero’s not the start, the truth falls apart”</p>
+</blockquote>
+<p>But this isn’t a rule; it’s a <em>heuristic</em>.</p>
+<hr>
+</section>
+<section id="on-the-utility-of-heuristics" class="level2">
+<h2 class="anchored" data-anchor-id="on-the-utility-of-heuristics">On the utility of heuristics</h2>
+<p>If you dig deeper into this topic, you’ll find a whole series of “rules” on <a href="https://handsondataviz.org/chart-design.html">how to make good charts</a>, such as:</p>
+<ul>
+<li>Always start at zero.</li>
+<li>Don’t use secondary axes.</li>
+<li>Don’t use pie charts.</li>
+<li>Don’t use 3D charts.</li>
+</ul>
+<p>These and other statements are taken as absolute rules, but in reality, they are heuristics. In psychology, a heuristic is a mental shortcut to simplify a problem. For example, if I have to decide where to eat, I’ll probably choose the restaurant with the best reviews on Google Maps. But is that the most rigorous way to make a decision about where to eat? I could survey people leaving the establishment, study their menu and prices, and compare them with those of similar or nearby places. But while you’re busy drafting the survey, your stomach will give you a dose of reality and force you to make a quick decision. <strong>That</strong> is where heuristics are useful.</p>
+<p>Heuristics in chart making serve the same function. They are general rules of thumb to guide you at the beginning. There are infinite chart types to choose from, and it’s easy to get lost; heuristics can help you make operational decisions. In the exploratory phase of an analysis, certain general rules can be helpful, but eventually, <strong>the message comes first.</strong></p>
+<hr>
+</section>
+<section id="when-heuristics-fail" class="level2">
+<h2 class="anchored" data-anchor-id="when-heuristics-fail">When heuristics fail</h2>
+<p>In the final stages of an analysis, when results begin to follow a pattern and conclusions emerge, conveying the message clearly and efficiently is the only thing that should matter. So, listen to me carefully: throw all the heuristics in the trash; they won’t help you there.</p>
+<blockquote class="blockquote">
+<p>There is therefore not a clear binary distinction between ‘deceptive’ versus ‘truthful’ y-axis presentations: designers must take into account the range and magnitude of effect sizes they wish to communicate at a per-data and per-task level.</p>
+</blockquote>
+<p><span class="citation" data-cites="Correll2019">Correll et al. (2019)</span></p>
+<p>Perhaps an example will make this clearer. Imagine the message you want to convey is that the latest government has worsened your country’s economy. You examine a few economic indices, and—<em>voilà</em>—over the last 6 months, GDP has dropped by a few tenths of a percentage point. You build your line chart and start spreading the word.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">123</span>)</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb3-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq.Date</span>(</span>
+<span id="cb3-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">from =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2016-01-01"</span>),</span>
+<span id="cb3-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"month"</span>,</span>
+<span id="cb3-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length.out =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span></span>
+<span id="cb3-8">  )</span>
+<span id="cb3-9">)</span>
+<span id="cb3-10"></span>
+<span id="cb3-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># sustained growth</span></span>
+<span id="cb3-12">data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>GDP <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">140</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length.out =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>)</span>
+<span id="cb3-13"></span>
+<span id="cb3-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># some noise</span></span>
+<span id="cb3-15">data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>GDP <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>GDP <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>)</span>
+<span id="cb3-16"></span>
+<span id="cb3-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drop in the last 6 months</span></span>
+<span id="cb3-18">data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>GDP[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">115</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>GDP[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">114</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.2</span>,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>)</span>
+<span id="cb3-19"></span>
+<span id="cb3-20">data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">115</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(date, GDP)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-24">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-25">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb3-26">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GDP has fallen during the last government's term"</span>,</span>
+<span id="cb3-27">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb3-28">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GDP"</span></span>
+<span id="cb3-29">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-30">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/heuristics_graphics/post_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>However, some people might point something out: if instead of selecting the timeframe that interests you, you take a wider range, the country’s GDP has grown much more than it has fallen in the last six months.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(date, GDP)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">115</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>),</span>
+<span id="cb4-5">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>,</span>
+<span id="cb4-6">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate</span>(</span>
+<span id="cb4-8">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rect"</span>,</span>
+<span id="cb4-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>date[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">115</span>],</span>
+<span id="cb4-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>date[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120</span>],</span>
+<span id="cb4-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>,</span>
+<span id="cb4-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>,</span>
+<span id="cb4-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>,</span>
+<span id="cb4-14">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span></span>
+<span id="cb4-15">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb4-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The same drop seen with more context"</span>,</span>
+<span id="cb4-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb4-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GDP"</span></span>
+<span id="cb4-20">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/heuristics_graphics/post_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Then the purists jump in: “Charts lie! You have to follow the conventions!” But was the chart to blame? Precisely—the chart did its job perfectly: it allowed us to convey the message that the latest government worsened the economy. Don’t blame the chart; blame the message. The problem isn’t how you scale the axes to emphasize a message; the problem is that, given the available data, the conclusion that the government worsened the economy isn’t accurate.</p>
+<p>Perhaps an example where excluding zero is appropriate will reinforce the idea. <span class="citation" data-cites="Correll2019">Correll et al. (2019)</span> give a very apt example. If, after performing our climate change analysis, we reach the conclusion that the temperature is increasing, would you choose a chart where you show zero (left, 0 degrees Fahrenheit) or would you truncate the axis to emphasize the differences (right)? And what if you also know that those differences, while numerically small, result in extremely important effects globally? You decide.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/heuristics_graphics/correll2019_fig1cd.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1 of Correll et. al 2019, cropped</figcaption>
+</figure>
+</div>
+<p>Again, charts are well-designed if they adequately convey a message. Questions about the certainty or rigor of the message are often much more complicated.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Correll2019" class="csl-entry">
+Correll, Michael, Enrico Bertini, and Steven Franconeri. 2019. <em>Truncating the y-Axis: Threat or Menace?</em> <a href="https://doi.org/10.48550/ARXIV.1907.02035">https://doi.org/10.48550/ARXIV.1907.02035</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>field_notes</category>
+  <guid>https://your-website-url.example.com/posts/heuristics_graphics/post.html</guid>
+  <pubDate>Sat, 04 Jul 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://your-website-url.example.com/posts/heuristics_graphics/correll2019_fig1cd.png" medium="image" type="image/png" height="58" width="144"/>
+</item>
 <item>
   <title>My poster in the 68th IAVS Annual Symposium - Gijón, Spain</title>
   <link>https://your-website-url.example.com/posts/IAVS26/poster.html</link>
